@@ -71,22 +71,21 @@ class Peip:
 
 <div align="center">
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=xPeiPeix&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&include_all_commits=true" alt="GitHub Stats" />
-<img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=xPeiPeix&layout=compact&theme=tokyonight&hide_border=true&langs_count=8" alt="Top Languages" />
+<img src="https://raw.githubusercontent.com/xPeiPeix/xPeiPeix/main/profile-summary-card-output/nightowl/0-profile-details.svg" alt="Profile Details" />
+
+<br/>
+
+<img src="https://raw.githubusercontent.com/xPeiPeix/xPeiPeix/main/profile-summary-card-output/nightowl/3-stats.svg" alt="GitHub Stats" height="220" />
+<img src="https://raw.githubusercontent.com/xPeiPeix/xPeiPeix/main/profile-summary-card-output/nightowl/2-most-commit-language.svg" alt="Most Commit Language" height="220" />
+
+<br/>
+
+<img src="https://raw.githubusercontent.com/xPeiPeix/xPeiPeix/main/profile-summary-card-output/nightowl/1-repos-per-language.svg" alt="Repos per Language" height="220" />
+<img src="https://raw.githubusercontent.com/xPeiPeix/xPeiPeix/main/profile-summary-card-output/nightowl/4-productive-time.svg" alt="Productive Time" height="220" />
 
 <br/>
 
 <img src="https://streak-stats.demolab.com?user=xPeiPeix&theme=tokyonight&hide_border=true" alt="Streak Stats" />
-
-</div>
-
----
-
-## Trophies
-
-<div align="center">
-
-<img src="https://github-profile-trophy.vercel.app/?username=xPeiPeix&theme=tokyonight&no-frame=true&margin-w=15&row=1&column=7" alt="Trophies" />
 
 </div>
 
@@ -120,12 +119,15 @@ class Peip:
 
 <div align="center">
 
-<a href="https://github.com/xPeiPeix/face_mosaic">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=xPeiPeix&repo=face_mosaic&theme=tokyonight&hide_border=true" alt="face_mosaic" />
-</a>
-<a href="https://github.com/xPeiPeix/local_folder_gallery">
-  <img src="https://github-readme-stats.vercel.app/api/pin/?username=xPeiPeix&repo=local_folder_gallery&theme=tokyonight&hide_border=true" alt="local_folder_gallery" />
-</a>
+### [face_mosaic](https://github.com/xPeiPeix/face_mosaic) &nbsp; ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) &nbsp; ![Stars](https://img.shields.io/github/stars/xPeiPeix/face_mosaic?style=flat-square&color=ff69b4) &nbsp; ![Forks](https://img.shields.io/github/forks/xPeiPeix/face_mosaic?style=flat-square&color=9370db)
+
+基于 MediaPipe 的智能人脸马赛克工具 — 高精度检测，支持图片/视频处理，完美保留音频，批量并发处理，开箱即用的隐私保护解决方案
+
+<br/>
+
+### [local_folder_gallery](https://github.com/xPeiPeix/local_folder_gallery) &nbsp; ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) &nbsp; ![Stars](https://img.shields.io/github/stars/xPeiPeix/local_folder_gallery?style=flat-square&color=ff69b4) &nbsp; ![Forks](https://img.shields.io/github/forks/xPeiPeix/local_folder_gallery?style=flat-square&color=9370db)
+
+本地文件夹图片画廊 — 快速浏览与管理本地图片集合
 
 </div>
 
