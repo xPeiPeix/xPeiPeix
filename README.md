@@ -20,7 +20,7 @@
 class Peip:
     def __init__(self):
         self.name        = "Peip"
-        self.location    = "China"
+        self.location    = "Wherever WiFi is strong"
         self.code        = ["Python", "JavaScript", "TypeScript"]
         self.tools       = ["MediaPipe", "React", "FastAPI", "Node.js"]
         self.focus       = "AI-powered vision tools"
