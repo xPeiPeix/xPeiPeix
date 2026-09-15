@@ -33,13 +33,11 @@ def rect(x,y,w,h,color,rx=0):
 
 def svg(title, height, body, width=960):
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="{html.escape(title)}">
-<title>{html.escape(title)}</title><defs><pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#122438" stroke-width="0.6"/></pattern><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="{PURPLE}" stop-opacity=".25"/><stop offset="1" stop-color="{PURPLE}" stop-opacity="0"/></linearGradient></defs>
-<path d="M18 1H{width-18}L{width-1} 18V{height-18}L{width-18} {height-1}H18L1 {height-18}V18Z" fill="#081321" stroke="#3984a5"/>
-<path d="M18 1H{width-18}L{width-1} 18V{height-18}L{width-18} {height-1}H18L1 {height-18}V18Z" fill="url(#grid)"/>
-<g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">{body}</g></svg>'''
+<title>{html.escape(title)}</title><defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="{PURPLE}" stop-opacity=".15"/><stop offset="1" stop-color="{PURPLE}" stop-opacity="0"/></linearGradient></defs>
+<g font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif">{body}</g></svg>'''
 
 def heading(label, note='', width=960):
-    return rect(25,24,4,17,CYAN,2)+text(40,39,label,17,CYAN,600)+text(width-26,39,note,12,MUTED,anchor='end')+line(25,53,width-25,53)
+    return text(25,39,label.capitalize(),20,TEXT,600)+text(width-26,39,note,12,MUTED,anchor='end')
 
 def generate():
     user = api(f'users/{USER}')
@@ -61,18 +59,18 @@ def generate():
     stars = sum(r['stargazers_count'] for r in repos)
     languages = collections.Counter(r['language'] for r in repos if r['language'])
     files = {}
-    # The pixel cat is a native vector mark; all dashboard assets are self-contained.
+    # The pixel cat and charts are self-contained vector artwork.
     cat = ['10000000001','11000000011','11111111111','11111111111','11011111011','11111111111','11110101111','01111111110','00111111100']
     body = ''
     for y,row in enumerate(cat):
         for x,pixel in enumerate(row):
             if pixel=='1': body += rect(37+x*9,48+y*9,6,6,CYAN)
     body += text(40,166,'>_',26,CYAN,600)
-    body += text(178,70,'Peip',40,TEXT,700)+text(294,70,'/ xPeiPeix',32,CYAN,600)
+    body += text(178,70,'Peip',44,TEXT,700)+text(294,70,'/ xPeiPeix',32,CYAN,600)
     body += text(180,105,'Personal tools. Open source.',18,TEXT)+text(180,133,'Everyday experiments.',18,TEXT)
     body += text(180,177,'Build small things. Make them useful.',14,MUTED)
     body += line(687,37,687,183)+text(712,66,'Python / TypeScript',14,CYAN)+text(712,100,'Automation & tooling',14,MUTED)+text(712,134,'Vision & web projects',14,MUTED)+text(712,174,'github.com/xPeiPeix',13,PURPLE)
-    files['header.svg'] = svg('Peip / xPeiPeix — personal tools and open source',215,body)
+    files['header.svg'] = svg('Peip / xPeiPeix — personal tools and open source',195,body)
     body = ''
     values=[(user['public_repos'],'PUBLIC REPOS'),(user['followers'],'FOLLOWERS'),(stars,'STARS / ORIGINALS'),(calendar['totalContributions'],'CONTRIBUTIONS / YEAR')]
     for i,(value,label) in enumerate(values):
@@ -170,6 +168,34 @@ def generate():
     body+=text(25,263,'First / last week may be partial.',12,MUTED)
     files['trend-mobile.svg']=svg('Weekly contribution totals',285,body,472)
     files['footer-mobile.svg']=svg('Last successful update',91,text(25,36,'> Keep building. Stay curious.',16,CYAN)+text(25,66,stamp,12,MUTED),472)
+    def dashboard(mobile):
+        names = ['header', 'overview', 'contributions', 'trend', 'insights', 'footer']
+        width = 472 if mobile else 960
+        offset = 0
+        children = []
+        for i, name in enumerate(names):
+            source = files[name + ('-mobile' if mobile else '') + '.svg']
+            height = int(ET.fromstring(source).attrib['height'])
+            child = source.replace('<svg ', f'<svg x="0" y="{offset}" ', 1)
+            child = child.replace('id="', f'id="section{i}-').replace('url(#', f'url(#section{i}-')
+            children.append(child)
+            offset += height
+        return f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{offset}" viewBox="0 0 {width} {offset}" role="img"><title>Peip — GitHub activity and projects</title>' + ''.join(children) + '</svg>'
+
+    dark = {f'dashboard{suffix}-dark.svg': dashboard(mobile)
+            for suffix, mobile in [('', False), ('-mobile', True)]}
+    light_colors = {
+        TEXT: '#1f2328', MUTED: '#59636e', LINE: '#d8dee4',
+        CYAN: '#087e8b', PURPLE: '#7955c7', '#efd16b': '#926b16',
+        '#54d8b2': '#148568', '#90baf4': '#4169aa',
+        '#172c41': '#eaeef2', '#172a3e': '#edf0f3',
+        '#16556d': '#c5e9e6', '#1687a3': '#82c9c3', '#24b5cc': '#3aa59f',
+    }
+    files = dict(dark)
+    for name, content in dark.items():
+        for old, new in light_colors.items():
+            content = content.replace(old, new)
+        files[name.replace('-dark.svg', '-light.svg')] = content
     # Validate every asset before changing any existing output. Failed runs never publish.
     for content in files.values(): ET.fromstring(content)
     for name,content in files.items(): (ROOT/'assets'/name).write_text(content+'\n')

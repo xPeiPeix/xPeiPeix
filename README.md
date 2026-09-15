@@ -1,46 +1,11 @@
-<p align="center">
-  <picture>
-    <source media="(max-width: 600px)" srcset="assets/header-mobile.svg" />
-    <img src="assets/header.svg" width="100%" alt="Peip / xPeiPeix — personal tools, open source, everyday experiments" />
-  </picture>
-</p>
-<p align="center">
-  <picture>
-    <source media="(max-width: 600px)" srcset="assets/overview-mobile.svg" />
-    <img src="assets/overview.svg" width="100%" alt="Public repositories, followers, stars on original public repositories and last-year contributions" />
-  </picture>
-</p>
-<p align="center">
-  <picture>
-    <source media="(max-width: 600px)" srcset="assets/contributions-mobile.svg" />
-    <img src="assets/contributions.svg" width="100%" alt="GitHub contributions over the last year" />
-  </picture>
-</p>
-<p align="center">
-  <picture>
-    <source media="(max-width: 600px)" srcset="assets/trend-mobile.svg" />
-    <img src="assets/trend.svg" width="100%" alt="Weekly contribution trend" />
-  </picture>
-</p>
-<p align="center">
-  <picture>
-    <source media="(max-width: 600px)" srcset="assets/insights-mobile.svg" />
-    <img src="assets/insights.svg" width="100%" alt="Primary languages across original public repositories and featured projects ranked by stars" />
-  </picture>
-</p>
+<picture>
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="assets/dashboard-mobile-dark.svg" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/dashboard-dark.svg" />
+  <source media="(max-width: 600px)" srcset="assets/dashboard-mobile-light.svg" />
+  <img src="assets/dashboard-light.svg" width="100%" alt="Peip / xPeiPeix — public repositories, followers, stars, contribution calendar, weekly trend, languages and featured projects. Last successful refresh appears at the bottom." />
+</picture>
 
-<p align="center">
-  <a href="https://github.com/xPeiPeix/face_mosaic">face_mosaic</a> ·
-  <a href="https://github.com/xPeiPeix/claude-repath">claude-repath</a> ·
-  <a href="https://github.com/xPeiPeix/multi_qrcode">multi_qrcode</a> ·
-  <a href="https://github.com/xPeiPeix/utahon">utahon</a>
-</p>
-<p align="center">
-  <picture>
-    <source media="(max-width: 600px)" srcset="assets/footer-mobile.svg" />
-    <img src="assets/footer.svg" width="100%" alt="Keep building. Stay curious. Last successful update is shown in UTC+8." />
-  </picture>
-</p>
+[face_mosaic](https://github.com/xPeiPeix/face_mosaic) · [claude-repath](https://github.com/xPeiPeix/claude-repath) · [multi_qrcode](https://github.com/xPeiPeix/multi_qrcode) · [utahon](https://github.com/xPeiPeix/utahon)
 
 <details>
 <summary>About these numbers</summary>
